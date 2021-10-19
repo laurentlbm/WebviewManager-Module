@@ -17,9 +17,9 @@ it_failed() {
 	ui_print "       5) There's a *tiny* chance we screwed up"
 	ui_print " Please fix any issues and retry."
 	ui_print " If you feel this is a bug or need assistance, head to our telegram"
-	mv "${EXT_DATA}"/logs "${TMPDIR}"
-	rm -rf "${EXT_DATA:?}"/*
-	mv "${TMPDIR}"/logs "${EXT_DATA}"/
+# 	mv "${EXT_DATA}"/logs "${TMPDIR}"
+# 	rm -rf "${EXT_DATA:?}"/*
+# 	mv "${TMPDIR}"/logs "${EXT_DATA}"/
 	ui_print " "
 	ui_print "⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠"
 	ui_print " "
@@ -38,21 +38,21 @@ touch "$VERBOSELOG"
 } >"$VERBOSELOG"
 set -x >>"$VERBOSELOG"
 echo "Started at $(date)"
-while test ! -d /storage/emulated/0/Android; do
-	sleep 1
-done
-detect_ext_data() {
-	if touch /sdcard/.rw && rm /sdcard/.rw; then
-		export EXT_DATA="/sdcard/WebviewManager"
-	elif touch /storage/emulated/0/.rw && rm /storage/emulated/0/.rw; then
-		export EXT_DATA="/storage/emulated/0/WebviewManager"
-	elif touch /data/media/0/.rw && rm /data/media/0/.rw; then
-		export EXT_DATA="/data/media/0/WebviewManager"
-	else
-		EXT_DATA='/storage/emulated/0/WebviewManager'
-	fi
-}
-detect_ext_data
+# while test ! -d /storage/emulated/0/Android; do
+# 	sleep 1
+# done
+# detect_ext_data() {
+# 	if touch /sdcard/.rw && rm /sdcard/.rw; then
+# 		export EXT_DATA="/sdcard/WebviewManager"
+# 	elif touch /storage/emulated/0/.rw && rm /storage/emulated/0/.rw; then
+# 		export EXT_DATA="/storage/emulated/0/WebviewManager"
+# 	elif touch /data/media/0/.rw && rm /data/media/0/.rw; then
+# 		export EXT_DATA="/data/media/0/WebviewManager"
+# 	else
+# 		EXT_DATA='/storage/emulated/0/WebviewManager'
+# 	fi
+# }
+# detect_ext_data
 if ! $INSTALL; then
 	if find "${MODDIR}" | grep -i 'webview[.]apk'; then
 		pm install -r -g "$(find "${MODDIR}" | grep -i 'webview[.]apk')" 2>&3
@@ -68,18 +68,18 @@ if ! $INSTALL; then
 		pm uninstall com.android.chrome 2>&3
 	fi
 	echo "Disabled chrome and google webview. You may re-enable but please be aware that may cause issues"
-	sed -i "/INSTALL/d" "${MODDIR}"/status.txt
-	echo "INSTALL=true" >>"${MODDIR}"/status.txt
+  	sed -i "/INSTALL/d" "${MODDIR}"/status.txt
+  	echo "INSTALL=true" >>"${MODDIR}"/status.txt
 else
 	echo "Skipping install, as the needed files are not present. This is most likely because they've already been installed"
 fi
 touch "$FINDLOG"
 {
-	echo -n "SDCARD DIR contains:"
-	find "$EXT_DATA"
+# 	echo -n "SDCARD DIR contains:"
+# 	find "$EXT_DATA"
 	echo -n "Module DIR contains:"
 	find "$MODDIR"
 } >"$FINDLOG"
-tail -n +1 "$EXT_DATA"/logs/install.log "$MODDIR"/logs/aapt.log "$MODDIR"/logs/find.log "$MODDIR"/logs/postfsdata.log "$MODDIR"/logs/service.log >"$MODDIR"/logs/full-"$(date +%F-%T)".log
-cp -rf "$MODDIR"/logs/full-"$(date +%F-%T)".log "$EXT_DATA"/logs
-find "$EXT_DATA"/logs -mtime +3 -exec rm -f {} \;
+tail -n +1 "$MODDIR"/logs/install.log "$MODDIR"/logs/aapt.log "$MODDIR"/logs/find.log "$MODDIR"/logs/postfsdata.log "$MODDIR"/logs/service.log >"$MODDIR"/logs/full-"$(date +%F-%T)".log
+# cp -rf "$MODDIR"/logs/full-"$(date +%F-%T)".log "$EXT_DATA"/logs
+# find "$EXT_DATA"/logs -mtime +3 -exec rm -f {} \;

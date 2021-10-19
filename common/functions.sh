@@ -1,17 +1,17 @@
 # shellcheck shell=ash
 # shellcheck disable=SC2061,SC3010,SC2166,SC2044,SC2046,SC2086,SC1090,SC2034,SC2155,SC1091
 # LETS FUCKING GOOOOOOO
-echo " __        __     _            _                 "
-echo " \ \      / /___ | |__ __   __(_)  ___ __      __"
-echo "  \ \ /\ / // _ \| '_ \\ \ / /| | / _ \\ \ /\ / /"
-echo "   \ V  V /|  __/| |_) |\ V / | ||  __/ \ V  V / "
-echo "    \_/\_/  \___||_.__/  \_/  |_| \___|  \_/\_/  "
-echo "  __  __                                         "
-echo " |  \/  |  __ _  _ __    __ _   __ _   ___  _ __ "
-echo " | |\/| | / _\` || '_ \  / _\` | / _\` | / _ \| '__|"
-echo " | |  | || (_| || | | || (_| || (_| ||  __/| |   "
-echo " |_|  |_| \__,_||_| |_| \__,_| \__, | \___||_|   "
-echo "                               |___/             "
+# echo " __        __     _            _                 "
+# echo " \ \      / /___ | |__ __   __(_)  ___ __      __"
+# echo "  \ \ /\ / // _ \| '_ \\ \ / /| | / _ \\ \ /\ / /"
+# echo "   \ V  V /|  __/| |_) |\ V / | ||  __/ \ V  V / "
+# echo "    \_/\_/  \___||_.__/  \_/  |_| \___|  \_/\_/  "
+# echo "  __  __                                         "
+# echo " |  \/  |  __ _  _ __    __ _   __ _   ___  _ __ "
+# echo " | |\/| | / _\` || '_ \  / _\` | / _\` | / _ \| '__|"
+# echo " | |  | || (_| || | | || (_| || (_| ||  __/| |   "
+# echo " |_|  |_| \__,_||_| |_| \__,_| \__, | \___||_|   "
+# echo "                               |___/             "
 unzip -o "$ZIPFILE" -x 'META-INF/*' 'common/functions.sh' -d $MODPATH >&2
 [ -f "$MODPATH/common/addon.tar.xz" ] && tar -xf $MODPATH/common/addon.tar.xz -C $MODPATH/common 2>/dev/null
 unzip "$MODPATH/common/tools/tools.zip" -d "$MODPATH/common/tools" >&2
@@ -28,13 +28,13 @@ it_failed() {
   ui_print "	 5) Bug in the installer"
   ui_print " Please fix any issues and retry."
   ui_print " BEFORE REPORTING A BUG, CHECK ITENS 1 - 4"
-  rm -fr "$EXT_DATA"/apks "$EXT_DATA"/version.txt
+  # rm -fr "$EXT_DATA"/apks "$EXT_DATA"/version.txt
   ui_print " "
   ui_print "⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠"
   ui_print " "
-  sleep 2
-  am start -a android.intent.action.VIEW -d "https://www.androidacy.com/contact/?f=wvm_install_fail" &>/dev/null
-sleep 0.15
+#   sleep 2
+#   am start -a android.intent.action.VIEW -d "https://www.androidacy.com/contact/?f=wvm_install_fail" &>/dev/null
+# sleep 0.15
   exit 1
 }
 BRAND=$(getprop ro.product.brand)
@@ -52,34 +52,34 @@ abort() {
   rm -fr $TMPDIR 2>/dev/null
   it_failed
 }
-detect_ext_data() {
-  if touch /sdcard/.rw && rm /sdcard/.rw; then
-    export EXT_DATA="/sdcard/WebviewManager"
-  elif touch /storage/emulated/0/.rw && rm /storage/emulated/0/.rw; then
-    export EXT_DATA="/storage/emulated/0/WebviewManager"
-  elif touch /data/media/0/.rw && rm /data/media/0/.rw; then
-    export EXT_DATA="/data/media/0/WebviewManager"
-  else
-    EXT_DATA='/storage/emulated/0/WebviewManager'
-    ui_print "⚠ Possible internal storage access issues! Could be an SEPolicy issue."
-    ui_print "⚠ Trying to proceed anyway..."
-  fi
-  if test ! -d "$EXT_DATA"; then
-    mkdir "$EXT_DATA"
-  fi
-  if ! mktouch "$EXT_DATA"/.rw && rm -fr "$EXT_DATA"/.rw; then
-    if ! rm -fr "$EXT_DATA" && mktouch "$EXT_DATA"/.rw && rm -fr "$EXT_DATA"/.rw; then
-      ui_print "⚠ Cannot access internal storage!"
-      it_failed
-    fi
-  fi
-  rm -f "$EXT_DATA"/.rw
-}
-detect_ext_data
+# detect_ext_data() {
+#   if touch /sdcard/.rw && rm /sdcard/.rw; then
+#     export EXT_DATA="/sdcard/WebviewManager"
+#   elif touch /storage/emulated/0/.rw && rm /storage/emulated/0/.rw; then
+#     export EXT_DATA="/storage/emulated/0/WebviewManager"
+#   elif touch /data/media/0/.rw && rm /data/media/0/.rw; then
+#     export EXT_DATA="/data/media/0/WebviewManager"
+#   else
+#     EXT_DATA='/storage/emulated/0/WebviewManager'
+#     ui_print "⚠ Possible internal storage access issues! Could be an SEPolicy issue."
+#     ui_print "⚠ Trying to proceed anyway..."
+#   fi
+#   if test ! -d "$EXT_DATA"; then
+#     mkdir "$EXT_DATA"
+#   fi
+#   if ! mktouch "$EXT_DATA"/.rw && rm -fr "$EXT_DATA"/.rw; then
+#     if ! rm -fr "$EXT_DATA" && mktouch "$EXT_DATA"/.rw && rm -fr "$EXT_DATA"/.rw; then
+#       ui_print "⚠ Cannot access internal storage!"
+#       it_failed
+#     fi
+#   fi
+#   rm -f "$EXT_DATA"/.rw
+# }
+# detect_ext_data
 mkdir "$MODPATH"/logs/
-mkdir -p "$EXT_DATA"/apks/
-mkdir -p "$EXT_DATA"/logs/
-chmod 750 -R "$EXT_DATA"
+# mkdir -p "$EXT_DATA"/apks/
+# mkdir -p "$EXT_DATA"/logs/
+# chmod 750 -R "$EXT_DATA"
 mount_apex() {
   $BOOTMODE || [ ! -d /system/apex ] && return
   local APEX DEST
@@ -284,7 +284,7 @@ DEVICE=$(getprop ro.product.device)
 ROM=$(getprop ro.build.display.id)
 API=$(grep_prop ro.build.version.sdk)
 
-ui_print "ⓘ Logging verbosely to ${EXT_DATA}/logs"
+# ui_print "ⓘ Logging verbosely to ${EXT_DATA}/logs"
 ### Logging functions
 
 # Log <level> <message>
@@ -294,29 +294,30 @@ log() {
 
 # Initialize logging
 setup_logger() {
-  LOGFILE=$EXT_DATA/logs/install.log
+  LOGFILE=$MODPATH/logs/install.log
   export LOGFILE
   {
     echo "Module: WebviewManager v10"
     echo "Device: $BRAND $MODEL ($DEVICE)"
     echo "ROM: $ROM, sdk$API"
   } >$LOGFILE
-  if test -f /sdcard/.androidacy-debug; then
-    set -x 2
-  fi
-  exec 2>>$LOGFILE
+  # if test -f /sdcard/.androidacy-debug; then
+    # set -x 2
+  # fi
+  # exec 2>>$LOGFILE
 }
 
 setup_logger
 
-ui_print  "ⓘ PLEASE NOTE: This module requires interent access and will abort if you don't have any"
-chmod 755 $MODPATH/common/tools/apiClient.sh
-. $MODPATH/common/tools/apiClient.sh
+ui_print  "ⓘ PLEASE NOTE: This module requires internet access and will abort if you don't have any"
+ln -s "$MODPATH/common/tools/arm/curl" "$MODPATH/common/tools/arm64/curl"
+ln -s "$MODPATH/common/tools/x86/curl" "$MODPATH/common/tools/x86_64/curl"
 alias aapt='$MODPATH/common/tools/$ARCH/aapt'
+alias curl='$MODPATH/common/tools/$ARCH/curl'
 alias sign='$MODPATH/common/tools/zipsigner'
 chmod 755 "$MODPATH/common/tools/$ARCH/aapt"
+chmod 755 "$MODPATH/common/tools/$ARCH/curl"
 chmod 755 "$MODPATH/common/tools/zipsigner"
-initClient 'wvm' '10.1.2'
 
 # Run addons
 if [ "$(ls -A $MODPATH/common/addon/*/install.sh 2>/dev/null)" ]; then

@@ -1,25 +1,20 @@
-# Webview Switcher - An Androidacy Project
+# Webview Manager Lite
+Fork of [Androidacy](https://www.androidacy.com)'s Webview Manager, with a few changes:
+- Stop opening browser to Androidacy's Website
+- Stop using their API, therefore:
+- - No speed throttling
+- - Download APKs directly from Github
+- Only install webview, no browser
 
-## Links
 
-- [Downloads](https://www.androidacy.com/?f=wvm_rdme)
-- [Website](https://www.androidacy.com/?utm_source=WebviewManager)
-- [Blog and updates](https://www.androidacy.com/blog/?utm_source=WebviewManager&utm_medium=github)
-* [Upstream repository](https://github.com/Androidacy/WebviewSwitcher). All development is done here until stable release.
-
-### Be sure to check out our new module, Font Manager!
-
-- Downloads are [here](https://www.androidacy.com/?f=fm_upsl)
-- The source is [here](https://github.com/Androidacy/FontManager-Module)
-- XDA thread is [here](https://forum.xda-developers.com/t/magisk-module-fontrevival-for-emojis-and-fonts.4194631/)
 
 ## What is this?
 
-With this module, you can install several different default browsers and webviews. Take a peak in [config.txt](https://github.com/androidacy/WebviewSwitcher/blob/master/config.txt) for more information!
+With this module, you can install a different default webview.
 
-Different webviews and browser have additional advantages to the default ones: they are often more up to date, secure, privacy friendly, and better performing!
+Different webviews have additional advantages to the default ones: they are often more up to date, secure, privacy friendly, and better performing!
 
-The module will always download the latest version of the webview and/or browser, to update it just reflash the module!
+The module will always download the latest version of the webview, to update it just reflash the module!
 
 The latest update should now work on all ROMs Android v7.0+. ROMs versions 5.x to 6.x are not explicitly supported. Overly customized OEM ROMs such as MIUI have limited support.
 
@@ -39,49 +34,24 @@ Chromium is created by and copyright [The Chromium Project](http://www.chromium.
 
 All binaries utilized and the original MMT-Extended template are developed by and copyright Zackptg5 excluding BusyBox and the original installer template which is built by and copyright John Wu. The upstream binaries are copyright and developed by the original authors.
 
-Module created by Androidacy with help early on from Skittles9823 and Zackptg5. The module is licensed under the AOSL (see LICENSE).
+Origimal module created by Androidacy with help early on from Skittles9823 and Zackptg5.
 
 The logging code used was orginally developed by and copyright John Fawkes, and modified later by Androidacy
 
 ## ETAs/ Versions
 
-This module downloads the latest browser and/or webview APK every time it is flashed. We will otherwise update as we see fit. 
+This module downloads the latest webview APK every time it is flashed. We will otherwise update as we see fit.
 At any time the latest alpha if available can be downloaded by zipping the master branch of the upstream repository, although you should wait for us to do a release first.
 
 In addition, there may be third party ways to update any apps that can be installed with the module. We do not endorse nor did we create these ways!
 
-## Changelog
-
-- Check out what's new [here](https://github.com/Magisk-Modules-Repo/bromitewebview/blob/master/CHANGELOG.md)
-
-## Donations
-
-Donations: [here](https://www.androidacy.com/donate/?f=WVM%20Readme)
-
-We recommend you check out the websites of the developers of the included apps for donation links.
-
-## Support
-
-Any issues with any bundled app should be reported to the respective developer, not us.
-
-Issues with the module should be filed [here](https://github.com/Magisk-Modules-Repo/bromitewebview/issues/).
-
-The XDA thread is [here](https://forum.xda-developers.com/android/software/bromite-magisk-module-t3936964)
-
-The telegram channel is [here](https://t.me/androidacy_announce)
-
-A Discord server is available to select supporters on our [Patreon](https://patreon.com/androidacy/?utm_source-WVM%20Readme&utm_medium=modules).
-
-Premium and enterprise support is offered to select Patreon supporters as well.
-
-
 ## Compatibility
 
-- Android 7.x to 11.0. 
-  - Some heavily customized stock ROMs may have issues. This is especially true on android 11!
-  - MIUI is not officially supported for the aforementioned reason. Some people have had success with debloating the stock bloatware.
-  - OneUI users: make sure Secure Folder is disabled before installing.
+- Android 7.x to 11.0.
+- Some heavily customized stock ROMs may have issues. This is especially true on android 11!
+- MIUI is not officially supported for the aforementioned reason. Some people have had success with debloating the stock bloatware.
+- OneUI users: make sure Secure Folder is disabled before installing.
 - Magisk v20.1+ required
 - **Required: flash through magisk manager**
-	- TWRP installs are not supported!
+- TWRP installs are not supported!
 - SELinux enforcing/permissive
