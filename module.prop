@@ -3,4 +3,4 @@ name=Webview Manager Lite
 version=1.0.0
 versionCode=1
 author=LL & Androidacy
-description=Change System WebView systemless-ly. Forked from Androidacy's Webview Manager.
+description=Change System WebView and/or browser systemless-ly. Forked from Androidacy's Webview Manager.

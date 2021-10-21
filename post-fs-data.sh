@@ -22,26 +22,24 @@ DEVICE=$(getprop ro.product.device)
 ROM=$(getprop ro.build.display.id)
 API=$(grep_prop ro.build.version.sdk)
 {
-	echo "Module: WebviewManager v10"
-	echo "Device: $BRAND $MODEL ($DEVICE)"
-	echo "ROM: $ROM, sdk$API"
+  echo "Module: Webview Manager Lite"
+  echo "Device: $BRAND $MODEL ($DEVICE)"
+  echo "ROM: $ROM, sdk$API"
 } >"$PROPSLOG"
 set -x >>"$PROPSLOG"
 if test "$API" -lt "27"; then
-	STATE="3"
+  STATE="3"
 else
-	STATE="6"
+  STATE="6"
 fi
 if ! $OVERLAY; then
-	echo "Clearing caches..."
-	rm -rf /data/resource-cache/* /data/dalvik-cache/* /cache/dalvik-cache/* /data/*/com*android.webview* /data/*/*/com*android.webview* /data/system/package_cache/*
-	sed -i "/com*webview/d" /data/system/packages.list
-	sed -i "/com*webview/d" /data/system/packages.xml
-	sed -i "/com.linuxandria.WebviewOverlay/d" "$LIST"
-	sed -i "/com.linuxandria.android.webviewoverlay/d" "$LIST"
-	echo "Forcing the system to register our overlay..."
-	sed -i "/item packageName=\"${OL}\"/d" /data/system/overlays.xml
-	sed -i "s|</overlays>|    <item packageName=\"${OL}\" userId=\"0\" targetPackageName=\"android\" baseCodePath=\"${DR}/WebviewOverlay.apk\" state=\"${STATE}\" isEnabled=\"true\" isStatic=\"true\" priority=\"9999\" /></overlays>|" $LIST
-	sed -i "/OVERLAY/d" "${MODDIR}"/status.txt
-	echo "OVERLAY=true" >>"${MODDIR}"/status.txt
+  echo "Clearing caches..."
+  rm -rf /data/resource-cache/* /data/dalvik-cache/* /cache/dalvik-cache/* /data/*/com*android.webview* /data/*/*/com*android.webview* /data/system/package_cache/*
+  sed -i "/com*webview/d" /data/system/packages.list
+  sed -i "/com*webview/d" /data/system/packages.xml
+  echo "Forcing the system to register our overlay..."
+  sed -i "/item packageName=\"${OL}\"/d" /data/system/overlays.xml
+  sed -i "s|</overlays>|    <item packageName=\"${OL}\" userId=\"0\" targetPackageName=\"android\" baseCodePath=\"${DR}/WebviewOverlay.apk\" state=\"${STATE}\" isEnabled=\"true\" isStatic=\"true\" priority=\"9999\" /></overlays>|" $LIST
+  sed -i "/OVERLAY/d" "${MODDIR}"/status.txt
+  echo "OVERLAY=true" >>"${MODDIR}"/status.txt
 fi

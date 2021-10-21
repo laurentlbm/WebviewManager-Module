@@ -1,10 +1,10 @@
 # Webview Manager Lite
 Fork of [Androidacy](https://www.androidacy.com)'s Webview Manager, with a few changes:
-- Stop opening browser to Androidacy's Website
-- Stop using their API, therefore:
-- - No speed throttling
-- - Download APKs directly from Github
-- Only install webview, no browser
+- Stop opening browser to Androidacy's Website.
+- Removed the use of their closed-source API, therefore:
+- - No speed throttling.
+- - Download APKs directly from Github or Ungoogked-Chromium.
+- No more writing to the user storage.
 
 
 
